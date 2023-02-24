@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    tools:context=".presentation.details.DetailsFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/notLoadingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="1dp">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressBar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                app:indicatorColor="@color/black" />
+
+            <TextView
+                android:id="@+id/noConnectionMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="no internet connection"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/userImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/userAvatar"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/userImage"
+            app:layout_constraintStart_toStartOf="@+id/userImage"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alex Victor"
+            android:textColor="#FAFAFA"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/userAvatar"
+            app:layout_constraintTop_toTopOf="@+id/userAvatar" />
+
+        <TextView
+            android:id="@+id/userUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="alexosesso"
+            android:textColor="#FAFAFA"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/userAvatar"
+            app:layout_constraintStart_toEndOf="@+id/userAvatar" />
+
+        <TextView
+            android:id="@+id/numberOfLikes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="210"
+            android:textColor="#FAFAFA"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/userAvatar"
+            app:layout_constraintEnd_toStartOf="@+id/toggleButton"
+            app:layout_constraintTop_toTopOf="@+id/toggleButton" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/like_selector"
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintBottom_toBottomOf="@+id/userAvatar"
+            app:layout_constraintEnd_toEndOf="@+id/userImage"
+            app:layout_constraintTop_toTopOf="@+id/userAvatar" />
+
+        <ImageView
+            android:id="@+id/ic_location"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_location"
+            app:layout_constraintEnd_toEndOf="@+id/userAvatar"
+            app:layout_constraintStart_toStartOf="@+id/userAvatar"
+            app:layout_constraintTop_toBottomOf="@+id/userImage" />
+
+        <TextView
+            android:id="@+id/userLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="San Francisco, CA"
+            app:layout_constraintBottom_toBottomOf="@+id/ic_location"
+            app:layout_constraintStart_toEndOf="@+id/ic_location"
+            app:layout_constraintTop_toTopOf="@+id/ic_location" />
+
+        <TextView
+            android:id="@+id/photoTags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="#model #woman #nature #rights #womanrights"
+            app:layout_constraintEnd_toEndOf="@+id/userImage"
+            app:layout_constraintStart_toStartOf="@+id/userImage"
+            app:layout_constraintTop_toBottomOf="@+id/ic_location" />
+
+        <TextView
+            android:id="@+id/photoInfo"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Made with: Canon\nModel: EOS 40D\nExposure: 0.01s\nAperture:\nFocal Lenght:\nISO:"
+            app:layout_constraintStart_toStartOf="@+id/ic_location"
+            app:layout_constraintTop_toBottomOf="@+id/photoTags" />
+
+        <TextView
+            android:id="@+id/userInfo"
+            android:layout_width="0dp"
+            android:gravity="start"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="About @mak_jp: FUJIFILM X Series\r\nCapture ordinary scenes around my town in Streetphotography style or Film like taste."
+            app:layout_constraintEnd_toEndOf="@+id/userImage"
+            app:layout_constraintStart_toEndOf="@+id/photoInfo"
+            app:layout_constraintTop_toBottomOf="@+id/photoTags" />
+
+        <TextView
+            android:id="@+id/numberOfDownloads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(124)"
+            app:layout_constraintBottom_toBottomOf="@+id/icDownload"
+            app:layout_constraintEnd_toStartOf="@+id/icDownload"
+            app:layout_constraintTop_toTopOf="@+id/icDownload" />
+
+        <TextView
+            android:id="@+id/download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="download"
+            app:layout_constraintBottom_toBottomOf="@+id/icDownload"
+            app:layout_constraintEnd_toStartOf="@+id/numberOfDownloads"
+            app:layout_constraintTop_toTopOf="@+id/icDownload" />
+
+        <ImageView
+            android:id="@+id/icDownload"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_downwad_dark"
+            app:layout_constraintEnd_toEndOf="@+id/userImage"
+            app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="photoInfo, userInfo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

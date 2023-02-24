@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.splashit.presentation.authorization.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_authFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/authFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.splashit.presentation.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+<!--        <argument-->
+<!--            android:name="id"-->
+<!--            app:argType="string" />-->
+        <action
+            android:id="@+id/action_mainFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/currentUserFragment"
+        android:name="com.example.splashit.presentation.curentuser.CurrentUserFragment"
+        android:label="fragment_current_user"
+        tools:layout="@layout/fragment_current_user" >
+        <action
+            android:id="@+id/action_currentUserFragment_to_authFragment"
+            app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_currentUserFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectionsFragment"
+        android:name="com.example.splashit.presentation.collections.CollectionsFragment"
+        android:label="fragment_collections"
+        tools:layout="@layout/fragment_collections" >
+        <action
+            android:id="@+id/action_collectionsFragment_to_userCollectoinFragment"
+            app:destination="@id/userCollectoinFragment" />
+        <argument
+            android:name="collection_id"
+            app:argType="string" />
+        <argument
+            android:name="tags"
+            app:argType="string" />
+        <argument
+            android:name="author"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="totalPhotos"
+            app:argType="integer" />
+        <argument
+            android:name="coverPhoto"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.splashit.presentation.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/userCollectoinFragment"
+        android:name="com.example.splashit.presentation.usercollection.UserCollectionFragment"
+        android:label="fragment_user_collectoin"
+        tools:layout="@layout/fragment_user_collectoin" >
+        <argument
+            android:name="collection_id"
+            app:argType="string" />
+        <argument
+            android:name="tags"
+            app:argType="string" />
+        <argument
+            android:name="author"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="totalPhotos"
+            app:argType="integer" />
+        <argument
+            android:name="coverPhoto"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_userCollectoinFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/userCollectoinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/likedPhotosFragment2"
+        android:name="com.example.splashit.presentation.curentuser.likedphotos.LikedPhotosFragment"
+        android:label="fragment_liked_photos"
+        tools:layout="@layout/fragment_liked_photos" >
+        <action
+            android:id="@+id/action_likedPhotosFragment2_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_likedPhotosFragment2_to_currentUserFragment"
+            app:destination="@id/currentUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentUserPhotoFragment2"
+        android:name="com.example.splashit.presentation.curentuser.photo.CurrentUserPhotoFragment"
+        android:label="fragment_current_user_photo"
+        tools:layout="@layout/fragment_current_user_photo" >
+        <action
+            android:id="@+id/action_currentUserPhotoFragment2_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentUserCollectionsFragment"
+        android:name="com.example.splashit.presentation.curentuser.collections.CurrentUserCollectionsFragment"
+        android:label="fragment_current_user_collections"
+        tools:layout="@layout/fragment_current_user_collections" />
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.splashit.presentation.onboarding.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_authFragment"
+            app:destination="@id/authFragment"
+            app:popUpTo="@id/viewPagerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.splashit.presentation.onboarding.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_authFragment"
+            app:destination="@id/authFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

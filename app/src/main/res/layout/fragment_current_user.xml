@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.curentuser.CurrentUserFragment">
+
+    <ImageView
+        android:id="@+id/icCurrentUser"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@color/teal_200"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/curentusericon" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/user_name"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/icCurrentUser"
+        app:layout_constraintTop_toTopOf="@+id/icCurrentUser" />
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nickname"
+        app:layout_constraintStart_toStartOf="@+id/userName"
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/status"
+        app:layout_constraintStart_toStartOf="@+id/userName"
+        app:layout_constraintTop_toBottomOf="@+id/nickname" />
+
+    <ImageView
+        android:id="@+id/icLocation"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_location"
+        app:layout_constraintStart_toStartOf="@+id/status"
+        app:layout_constraintTop_toBottomOf="@+id/status" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/icLocation"
+        app:layout_constraintStart_toEndOf="@+id/icLocation"
+        app:layout_constraintTop_toTopOf="@+id/icLocation" />
+
+    <ImageView
+        android:id="@+id/icMail"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_email"
+        app:layout_constraintStart_toStartOf="@+id/userName"
+        app:layout_constraintTop_toBottomOf="@+id/icLocation" />
+
+    <TextView
+        android:id="@+id/eMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/email"
+        app:layout_constraintBottom_toBottomOf="@+id/icMail"
+        app:layout_constraintStart_toEndOf="@+id/icMail"
+        app:layout_constraintTop_toTopOf="@+id/icMail" />
+
+
+    <ImageView
+        android:id="@+id/icDownload"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_downwad_dark"
+        app:layout_constraintStart_toStartOf="@+id/userName"
+        app:layout_constraintTop_toBottomOf="@+id/icMail" />
+
+    <TextView
+        android:id="@+id/downloads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/downloads"
+        app:layout_constraintBottom_toBottomOf="@+id/icDownload"
+        app:layout_constraintStart_toEndOf="@+id/icDownload"
+        app:layout_constraintTop_toTopOf="@+id/icDownload" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/downloads"
+        app:menu="@menu/current_user_navigation_menu"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="false"
+        android:paddingBottom="6dp"
+        app:elevation="0dp"
+        android:theme="@style/BottomNavigationStyle"
+        app:itemBackground="@null" />
+
+    <FrameLayout
+        android:id="@+id/containerFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_navigation"
+        app:navGraph="@navigation/current_user_nav_graph"
+        android:orientation="horizontal" />
+
+    <FrameLayout
+        android:id="@+id/notLoadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" >
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressBar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminate="true"
+            app:indicatorColor="@color/black"
+            android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/noConnectionMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="Нет сети. Обновите страницу."
+            android:layout_gravity="center"/>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

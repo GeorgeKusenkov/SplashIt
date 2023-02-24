@@ -1,0 +1,32 @@
+package com.example.splashit.data.models.userinfo
+
+data class DetailUnsplashPhoto(
+    val alt_description: String,
+    val blur_hash: String,
+    val color: String,
+    val created_at: String,
+    val current_user_collections: List<Any>,
+    val description: String,
+    val downloads: Int,
+    val exif: Exif,
+    val height: Int,
+    val id: String,
+    var liked_by_user: Boolean,
+    var likes: Int,
+    val links: Links,
+    val location: Location,
+    val meta: Meta,
+    val promoted_at: String,
+    val public_domain: Boolean,
+    val related_collections: RelatedCollections,
+    val sponsorship: Any,
+    val tags: List<Tag>,
+    val tags_preview: List<Any>,
+    val topic_submissions: TopicSubmissionsXX,
+    val topics: List<Any>,
+    val updated_at: String,
+    val urls: UrlsXXX,
+    val user: UserXXX,
+    val views: Int,
+    val width: Int
+)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/currentUserPhotoFragment"
+        android:enabled="true"
+        android:title="@string/photos"/>
+    <item
+        android:id="@+id/likedPhotosFragment"
+        android:enabled="true"
+        android:title="@string/likes" />
+    <item
+        android:id="@+id/collections"
+        android:enabled="true"
+        android:title="10\nколлекции"/>
+</menu>
+
