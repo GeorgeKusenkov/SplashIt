@@ -13,6 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -21,8 +22,7 @@ private const val BASE_URL = "https://api.unsplash.com/"
 
 interface Api {
     @GET("me")
-    suspend fun getCurrentUserInfo(
-    ): CurrentUserDto
+    suspend fun getCurrentUserInfo(): CurrentUserDto
 
     @GET("users/{username}/likes")
     suspend fun getCurrentUserLikedPhotos(

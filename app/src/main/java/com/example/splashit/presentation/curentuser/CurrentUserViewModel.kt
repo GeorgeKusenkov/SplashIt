@@ -22,6 +22,9 @@ class CurrentUserViewModel(
     private var _userInfo = MutableStateFlow<CurrentUserInfo?>(null)
     val userInfo = _userInfo.asStateFlow()
 
+//    private var _userInfo = MutableStateFlow<CurrentUserDto?>(null)
+//        val userInfo = _userInfo.asStateFlow()
+
     private var _showLoadingMessage = MutableStateFlow(false)
     val showLoadingMessage = _showLoadingMessage.asStateFlow()
 
@@ -37,16 +40,25 @@ class CurrentUserViewModel(
         viewModelScope.launch {
             runCatching {
                 _isLoading.value = true
+//                Api.retrofit.getCurrentUserInfo()
                 getUserInfoUseCase.execute()
+//                Api.retrofit.getCurrentUserInfo().username
             }.onSuccess {
+                Log.d("Oauth", "Загрузка данных: УСПЕХ")
+//                Log.d("Oauth", "Загрузка данных: ${Api.retrofit.getCurrentUserInfo()}")
+//                Log.d("Oauth", "Загрузка данных: ${Api.retrofit.getCurrentUserInfo().username}")
+//                _userInfo.value = Api.retrofit.getCurrentUserInfo()
                 _userInfo.value = getUserInfoUseCase.execute()
                 _showLoadingMessage.value = false
                 _isLoading.value = false
-                Log.d("Oauth", "Загрузка данных: УСПЕХ")
+
             }.onFailure {
+                Log.d("Oauth", "Загрузка данных: ПРОВАЛ")
+//                Log.d("Oauth", "Загрузка данных: ${Api.retrofit.getCurrentUserInfo()}")
+//                Log.d("Oauth", "Загрузка данных: ${Api.retrofit.getCurrentUserInfo().username}")
                 _showLoadingMessage.value = true
                 _isLoading.value = false
-                Log.d("Oauth", "Загрузка данных: ПРОВАЛ")
+                Log.d("Oauth", "Загрузка данных: $it")
             }
         }
     }

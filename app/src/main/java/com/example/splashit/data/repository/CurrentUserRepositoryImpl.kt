@@ -14,19 +14,20 @@ class CurrentUserRepositoryImpl : CurrentUserRepository {
         currentUserName = Api.retrofit.getCurrentUserInfo().username
         val user = Api.retrofit.getCurrentUserInfo()
         currentUserName = user.username
-        return CurrentUserInfo(
+        val d = CurrentUserInfo(
             id = user.id,
             first_name = user.first_name,
             last_name = user.last_name,
             username = user.username,
             bio = user.bio,
-            location = user.location,
+            location = user.location ?: "",
             email = user.email,
             downloads = user.downloads,
             profileImage = user.profile_image,
             totalCollections = user.total_collections,
             totalLikes = user.total_likes
         )
+        return d
     }
 
     override suspend fun getCurrentUserLikedPhotos(page: Int): List<CurrentUserLikedPhotos> {

@@ -91,29 +91,43 @@ class CurrentUserFragment : Fragment(), MenuProvider {
                             userName.text =
                                 "${it?.first_name ?: EMPTY_STRING_VALUE} ${it?.last_name ?: EMPTY_STRING_VALUE}"
                             nickname.text = "@${it?.username ?: EMPTY_STRING_VALUE}"
-                            status.text = it?.bio ?: EMPTY_STRING_VALUE
-                            location.text = it?.location ?: EMPTY_STRING_VALUE
+
+                            if (it?.bio.isNullOrEmpty())
+                                status.isVisible = false
+                            else
+                                status.text = it?.bio ?: EMPTY_STRING_VALUE
+
+
+                            if (it?.location.isNullOrEmpty()) {
+                                icLocation.isVisible = false
+                                location.isVisible = false
+                            } else
+                                location.text = it?.location ?: EMPTY_STRING_VALUE
+
+
+
                             eMail.text = it?.email ?: EMPTY_STRING_VALUE
                             downloads.text = it?.downloads.toString()
 
-                            binding.bottomNavigation.menu.findItem(R.id.currentUserPhotoFragment).title =
+                            bottomNavigation.menu.findItem(R.id.currentUserPhotoFragment).title =
                                 getString(
                                     R.string.current_user_downloads,
                                     it?.downloads ?: EMPTY_INT_VALUE
                                 )
-                            binding.bottomNavigation.menu.findItem(R.id.likedPhotosFragment).title =
+                            bottomNavigation.menu.findItem(R.id.likedPhotosFragment).title =
                                 getString(
                                     R.string.current_user_likes, it?.totalLikes ?: EMPTY_INT_VALUE
                                 )
-                            binding.bottomNavigation.menu.findItem(R.id.collections).title =
+                            bottomNavigation.menu.findItem(R.id.collections).title =
                                 getString(
                                     R.string.current_user_collections,
                                     it?.totalCollections ?: EMPTY_INT_VALUE
                                 )
-
+//
                             Glide
                                 .with(requireContext())
-                                .load(it?.profileImage?.large)
+                                .load(it?.profileImage?.small)
+                                .error(R.drawable.placeholder_no_image)
                                 .circleCrop()
                                 .into(icCurrentUser)
                         }

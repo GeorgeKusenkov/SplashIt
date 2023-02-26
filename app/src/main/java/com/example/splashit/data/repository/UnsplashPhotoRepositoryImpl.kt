@@ -27,7 +27,11 @@ class UnsplashPhotoRepositoryImpl : UsersPhotoRepository {
     }
 
     override suspend fun getCurrentUserPhotos(page: Int): List<CurrentUserPhotos> {
-        val userPhotos = Api.retrofit.getUserPhotos("g_kussenkov",page)
+        val currentUserName = Api.retrofit.getCurrentUserInfo().username
+//        val currentUserName2 = "g_kussenkov"
+//        val currentUserName3 = "g_kussenkov"
+//        Log.d("Oauth", "UserNAME: $currentUserName")
+        val userPhotos = Api.retrofit.getUserPhotos(currentUserName,page)
         val usersPhoto = mutableListOf<CurrentUserPhotos>()
 
         userPhotos.forEach {

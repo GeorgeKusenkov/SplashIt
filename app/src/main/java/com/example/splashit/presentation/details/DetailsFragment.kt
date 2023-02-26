@@ -2,7 +2,6 @@ package com.example.splashit.presentation.details
 
 import android.app.DownloadManager
 import android.content.BroadcastReceiver
-import android.content.ContentUris
 import android.content.Context
 import android.content.Context.DOWNLOAD_SERVICE
 import android.content.Intent
@@ -10,12 +9,10 @@ import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -32,10 +29,7 @@ import com.example.splashit.data.models.userinfo.DetailUnsplashPhoto
 import com.example.splashit.databinding.FragmentDetailsBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
-import okhttp3.internal.notify
 import java.io.File
-import java.util.Timer
-import java.util.TimerTask
 import javax.inject.Inject
 
 @ExperimentalPagingApi
@@ -246,11 +240,9 @@ class DetailsFragment : Fragment() {
                                 } else {
                                     Snackbar.make(
                                         binding.root,
-                                        "НЕ загружено!",
+                                        "Не удалось загрузить",
                                         Snackbar.LENGTH_LONG
-                                    ).setAction("открыть") {
-                                        openFile()
-                                    }.show()
+                                    ).show()
                                 }
                             }
 
